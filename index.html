@@ -1,248 +1,542 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="day">
 
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Portfolio of Vishwas Sharma — Web Developer & Software Engineer" />
+    <meta name="theme-color" content="#f8f9fc" />
+    <meta name="color-scheme" content="light dark" />
     <title>Vishwas Sharma | Portfolio</title>
+    <script>
+        // Set theme before first paint to avoid a flash of the wrong theme.
+        (function () {
+            try {
+                var KEY = 'vs-portfolio-theme';
+                var stored = localStorage.getItem(KEY);
+                var theme = stored === 'night' || stored === 'day'
+                    ? stored
+                    : (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'night' : 'day');
+                document.documentElement.setAttribute('data-theme', theme);
+            } catch (e) {
+                document.documentElement.setAttribute('data-theme', 'day');
+            }
+        })();
+    </script>
     <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Nunito+Sans:wght@300;400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Nunito+Sans:opsz,wght@6..12,300;6..12,400;6..12,600;6..12,700&display=swap"
         rel="stylesheet">
 </head>
 
 <body>
-    <header class="header">
-        <h1 class="logo">Vishwas Sharma</h1>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#certifications">Certifications</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+        <div class="header-inner">
+            <a class="brand" href="#top" aria-label="Vishwas Sharma — back to top">
+                <span class="brand-text">Vishwas Sharma</span>
+            </a>
+            <nav class="site-nav" id="siteNav" aria-label="Primary">
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#experience">Experience</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#education">Education</a></li>
+                    <li><a href="#certifications">Certifications</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-controls">
+                <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch to night theme"
+                    aria-pressed="false" title="Toggle day / night theme">
+                    <svg class="icon icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="4" />
+                        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+                    </svg>
+                    <svg class="icon icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                    </svg>
+                    <span class="toggle-knob" aria-hidden="true"></span>
+                    <span class="visually-hidden" id="themeToggleText">Activate night theme</span>
+                </button>
+                <button class="menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="siteNav"
+                    aria-label="Open navigation menu">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
     </header>
-    <section class="hero">
-        <h2>Web Developer & Software Engineer</h2>
-        <p>Building clean, clever, and meaningful digital experiences.</p>
-        <p class="location">📍 Vidisha, Madhya Pradesh, India</p>
-        <div class="links">
-            <a href="https://github.com/vishwassharma38" target="_blank">GitHub</a>
-            <a href="mailto:vishwassharma38@gmail.com">Email</a>
-            <a href="tel:+918817858540">+91 88178 58540</a>
+
+    <main id="main">
+        <section class="hero" id="top" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow"><span class="pulse-dot" aria-hidden="true"></span> Vidisha, Madhya Pradesh,
+                        India</p>
+                    <h2 id="hero-title">Vishwas Sharma<br /><span class="hero-role">Web Developer &amp; Software
+                            Engineer</span></h2>
+                    <p class="hero-tagline">Building clean, clever, and meaningful digital experiences.</p>
+                    <p class="hero-summary">Python, PHP and full-stack web development — from portals and APIs to
+                        creative media and brand work. This portfolio is the hub for my projects, including
+                        <strong>LinkShrine</strong>.</p>
+                    <div class="hero-actions">
+                        <a class="btn btn-primary" href="#projects">View projects</a>
+                        <a class="btn btn-ghost" href="#contact">Get in touch</a>
+                    </div>
+                    <div class="hero-links">
+                        <a href="https://github.com/vishwassharma38" target="_blank" rel="noopener">GitHub</a>
+                        <a href="mailto:vishwassharma38@gmail.com">Email</a>
+                        <a href="tel:+918817858540">+91 88178 58540</a>
+                        <a href="https://www.linkedin.com/in/vishwassharma85/" target="_blank"
+                            rel="noopener">LinkedIn</a>
+                    </div>
+                </div>
+                <div class="hero-card" aria-label="Profile summary">
+                    <div class="profile-row">
+                        <span class="profile-avatar" aria-hidden="true">VS</span>
+                        <div>
+                            <p class="profile-name">Vishwas Sharma</p>
+                            <p class="profile-meta">Full-stack · Flask · PHP · PostgreSQL</p>
+                        </div>
+                    </div>
+                    <dl class="profile-facts">
+                        <div>
+                            <dt>Focus</dt>
+                            <dd>Web apps &amp; APIs</dd>
+                        </div>
+                        <div>
+                            <dt>Base</dt>
+                            <dd>Vidisha, India</dd>
+                        </div>
+                        <div>
+                            <dt>Hub projects</dt>
+                            <dd>LinkShrine · Waifuwalls · Scrollforge</dd>
+                        </div>
+                    </dl>
+                    <div class="profile-cta">
+                        <a href="https://github.com/vishwassharma38/linkshrine" target="_blank" rel="noopener">
+                            Featured: LinkShrine.link <span aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section id="about" class="section card" aria-labelledby="about-title">
+                <p class="section-eyebrow">Profile</p>
+                <h3 id="about-title">About</h3>
+                <p class="lead">Aspiring Web Developer with strong foundational experience in Python, PHP, and
+                    full-stack web development. Skilled in building real-world applications, from web portals to custom
+                    utilities. Enthusiastic learner with a background in branding, analytics, and cross-functional
+                    teamwork gained through diverse internships. Passionate about solving problems through code and
+                    contributing to meaningful digital experiences.</p>
+            </section>
+
+            <section id="experience" class="section" aria-labelledby="experience-title">
+                <p class="section-eyebrow">Work</p>
+                <h3 id="experience-title">Experience</h3>
+                <div class="stack">
+                    <article class="card timeline-card">
+                        <div class="card-head">
+                            <h4>Virtual Intern – On-Premise Sales</h4>
+                            <span class="pill">Jun 2023 – Jul 2023</span>
+                        </div>
+                        <p class="company">Red Bull, USA (Remote)</p>
+                        <ul class="check-list">
+                            <li>Analysed sales data from 100+ accounts to identify key growth opportunities and drive
+                                strategic marketing decisions.</li>
+                            <li>Practised objection handling and product pitching via virtual B2B sales simulations.
+                            </li>
+                        </ul>
+                    </article>
+                    <article class="card timeline-card">
+                        <div class="card-head">
+                            <h4>Branding &amp; Design Intern</h4>
+                            <span class="pill">Apr 2023 – May 2023</span>
+                        </div>
+                        <p class="company">Sydney Romantics, Australia (Remote)</p>
+                        <ul class="check-list">
+                            <li>Assisted in designing brand identity concepts and product visuals using Adobe Creative
+                                Suite.</li>
+                            <li>Contributed to community engagement strategies, aiding in a 10% increase in follower
+                                interaction during the internship period.</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="projects" class="section" aria-labelledby="projects-title">
+                <p class="section-eyebrow">Selected work</p>
+                <h3 id="projects-title">Projects</h3>
+                <p class="section-note">Engineering projects first, then design &amp; media work. Repository links are
+                    included only where they already exist.</p>
+                <div class="project-grid">
+                    <article class="card project-card project-featured">
+                        <p class="featured-flag">Featured · LinkShrine family</p>
+                        <h4>LinkShrine.link</h4>
+                        <p>Curated anime streaming directory with live link validation, automatic dead-link replacement,
+                            and pixel-art-inspired UI.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Flask</li>
+                            <li>Python</li>
+                            <li>JavaScript</li>
+                            <li>Render</li>
+                        </ul>
+                        <div class="card-links">
+                            <a href="https://github.com/vishwassharma38/linkshrine" target="_blank"
+                                rel="noopener">Repository <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <h4>PG Accommodation System</h4>
+                        <p>Full-stack web portal for students to find, filter, and manage PG accommodations with admin
+                            dashboard and CRUD functionality.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>PHP</li>
+                            <li>MySQL</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                        </ul>
+                        <div class="card-links">
+                            <a href="https://github.com/vishwassharma38/pg-accommodation" target="_blank"
+                                rel="noopener">Repository <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <h4>Scrollforge API</h4>
+                        <p>Procedural fantasy character generator with detailed biodata including backstories, factions,
+                            and alliances. Supports bulk generation.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Flask</li>
+                            <li>JSON</li>
+                            <li>Python</li>
+                            <li>Render</li>
+                        </ul>
+                        <div class="card-links">
+                            <a href="https://github.com/vishwassharma38/scrollforge" target="_blank"
+                                rel="noopener">Repository <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <h4>Waifuwalls</h4>
+                        <p>Digital art and wallpaper platform for anime, fantasy, sci-fi, and nature categories with
+                            aesthetic UI and category filtering.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Flask</li>
+                            <li>PostgreSQL</li>
+                            <li>Jinja2</li>
+                        </ul>
+                        <div class="card-links">
+                            <a href="https://github.com/vishwassharma38/waifuwalls" target="_blank"
+                                rel="noopener">Repository <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <h4>LinkShrine Web Crawler</h4>
+                        <p>Automated URL indexer with 10+ filters for iframes, video tags, and metadata. Features
+                            preflight checks every 2 days.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>JSON</li>
+                            <li>GoogleSearch</li>
+                        </ul>
+                    </article>
+                    <article class="card project-card">
+                        <h4>Telegram-based Chat Messenger</h4>
+                        <p>Real-time messenger systems (SATI Messenger &amp; Blazing Messenger) with custom commands,
+                            user verification, and session history.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>Telegram API</li>
+                        </ul>
+                        <div class="card-links">
+                            <a href="https://github.com/vishwassharma38/telegram-messenger" target="_blank"
+                                rel="noopener">Repository <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <h4>Desktop Web Browser</h4>
+                        <p>Basic browser GUI with tabbed navigation, bookmark saving, and customized styling.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>PyQt5</li>
+                        </ul>
+                    </article>
+                    <article class="card project-card">
+                        <h4>AI Voice Assistant</h4>
+                        <p>Personalized voice assistant for executing system commands, opening apps, and voice responses
+                            with failover handling.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>pyttsx3</li>
+                        </ul>
+                        <div class="card-links">
+                            <a href="https://github.com/vishwassharma38/voice-assistant" target="_blank"
+                                rel="noopener">Repository <span aria-hidden="true">→</span></a>
+                        </div>
+                    </article>
+                    <article class="card project-card">
+                        <h4>URL Shortener</h4>
+                        <p>Desktop utility app for generating shortened URLs.</p>
+                        <ul class="tags" aria-label="Technologies">
+                            <li>Python</li>
+                            <li>Tkinter</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <h4 class="subsection-title">Design &amp; Media Projects</h4>
+                <div class="project-grid">
+                    <article class="card project-card">
+                        <h4>VertexPost Brand Identity</h4>
+                        <p>Created official logo and branding elements for a Blogger website.</p>
+                        <ul class="tags" aria-label="Disciplines">
+                            <li>Design</li>
+                            <li>Branding</li>
+                        </ul>
+                    </article>
+                    <article class="card project-card">
+                        <h4>Skripply Post SEO</h4>
+                        <p>Optimized Blogger-based website with SEO strategies, improving visibility and reach.</p>
+                        <ul class="tags" aria-label="Disciplines">
+                            <li>SEO</li>
+                            <li>Optimization</li>
+                        </ul>
+                    </article>
+                    <article class="card project-card">
+                        <h4>Vodoo Video Chat App</h4>
+                        <p>Designed app icon, mascot, and promotional videos for product launch branding.</p>
+                        <ul class="tags" aria-label="Tools">
+                            <li>After Effects</li>
+                            <li>Premiere Pro</li>
+                        </ul>
+                    </article>
+                    <article class="card project-card">
+                        <h4>WordSpring Puzzle Game</h4>
+                        <p>Designed app icon, splash screen, and promotional campaign roadmap.</p>
+                        <ul class="tags" aria-label="Tools">
+                            <li>Inkscape</li>
+                            <li>Canva</li>
+                        </ul>
+                    </article>
+                </div>
+            </section>
+
+            <section id="skills" class="section" aria-labelledby="skills-title">
+                <p class="section-eyebrow">Toolbox</p>
+                <h3 id="skills-title">Skills</h3>
+                <div class="skill-grid">
+                    <div class="card skill-card"><strong>Languages</strong><span>Python, PHP, JavaScript, HTML, CSS,
+                            Vibecode</span></div>
+                    <div class="card skill-card"><strong>Frameworks</strong><span>Flask, Django, Tkinter, PyQt5</span>
+                    </div>
+                    <div class="card skill-card"><strong>Databases</strong><span>PostgreSQL, MySQL, Supabase,
+                            JSON</span></div>
+                    <div class="card skill-card"><strong>Tools</strong><span>GitHub, VS Code, XAMPP, Postman</span></div>
+                    <div class="card skill-card"><strong>Design</strong><span>Adobe Photoshop, Premiere Pro, After
+                            Effects, PageMaker, AVS Video Editor</span></div>
+                    <div class="card skill-card"><strong>Other</strong><span>Microsoft Excel, PowerPoint</span></div>
+                </div>
+            </section>
+
+            <section id="education" class="section" aria-labelledby="education-title">
+                <p class="section-eyebrow">Background</p>
+                <h3 id="education-title">Education</h3>
+                <div class="stack">
+                    <article class="card timeline-card">
+                        <div class="card-head">
+                            <h4>B.Tech in Information Technology (IoT)</h4>
+                            <span class="pill">Oct 2021 – Jul 2024</span>
+                        </div>
+                        <p>Samrat Ashok Technological Institute, Vidisha</p>
+                        <p class="specialization">Specialization: Internet of Things</p>
+                    </article>
+                    <article class="card timeline-card">
+                        <div class="card-head">
+                            <h4>Diploma in Computer Science &amp; Engineering</h4>
+                            <span class="pill">Apr 2016 – Jul 2020</span>
+                        </div>
+                        <p>Samrat Ashok Technological Institute, Vidisha</p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="certifications" class="section" aria-labelledby="certifications-title">
+                <p class="section-eyebrow">Credentials</p>
+                <h3 id="certifications-title">Certifications</h3>
+                <ul class="cert-list">
+                    <li class="card"><strong>Data Analytics And Visualisation Virtual Experience</strong><span>Accenture
+                            · July 14, 2023</span></li>
+                    <li class="card"><strong>Data Visualisation: Empowering Business With Effective
+                            Insights</strong><span>TATA · May 20, 2023</span></li>
+                    <li class="card"><strong>Technical Consulting Virtual Internship Assemble the Data And Data
+                            Analysis</strong><span>SAP · May 25, 2023</span></li>
+                    <li class="card"><strong>TCS Ion Career Edge - Young Professional</strong><span>TCS · July 01,
+                            2024</span></li>
+                    <li class="card"><strong>Human Resources Analytics</strong><span>University of California, Irvine
+                            via Coursera · October 07, 2025</span></li>
+                </ul>
+            </section>
+
+            <section id="contact" class="section card contact-card" aria-labelledby="contact-title">
+                <p class="section-eyebrow">Next step</p>
+                <h3 id="contact-title">Contact</h3>
+                <p class="lead">The fastest way to reach me is email. I also keep my code and professional profiles
+                    linked below.</p>
+                <div class="contact-grid">
+                    <a class="contact-item" href="mailto:vishwassharma38@gmail.com">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">vishwassharma38@gmail.com</span>
+                    </a>
+                    <a class="contact-item" href="tel:+918817858540">
+                        <span class="contact-label">Phone</span>
+                        <span class="contact-value">+91 88178 58540</span>
+                    </a>
+                    <a class="contact-item" href="https://github.com/vishwassharma38" target="_blank" rel="noopener">
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">github.com/vishwassharma38</span>
+                    </a>
+                    <a class="contact-item" href="https://www.linkedin.com/in/vishwassharma85/" target="_blank"
+                        rel="noopener">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">linkedin.com/in/vishwassharma85</span>
+                    </a>
+                </div>
+            </section>
         </div>
-    </section>
-    <section id="about" class="about">
-        <h3>About</h3>
-        <p>Aspiring Web Developer with strong foundational experience in Python, PHP, and full-stack web development.
-            Skilled in building real-world applications, from web portals to custom utilities. Enthusiastic learner with
-            a background in branding, analytics, and cross-functional teamwork gained through diverse internships.
-            Passionate about solving problems through code and contributing to meaningful digital experiences.</p>
-    </section>
-    <section id="experience" class="experience">
-        <h3>Experience</h3>
-        <div class="experience-item">
-            <div class="exp-header">
-                <h4>Virtual Intern – On-Premise Sales</h4>
-                <span class="exp-date">Jun 2023 – Jul 2023</span>
-            </div>
-            <p class="company">Red Bull, USA (Remote)</p>
-            <ul>
-                <li>Analysed sales data from 100+ accounts to identify key growth opportunities and drive strategic
-                    marketing decisions.</li>
-                <li>Practised objection handling and product pitching via virtual B2B sales simulations.</li>
-            </ul>
-        </div>
-        <div class="experience-item">
-            <div class="exp-header">
-                <h4>Branding & Design Intern</h4>
-                <span class="exp-date">Apr 2023 – May 2023</span>
-            </div>
-            <p class="company">Sydney Romantics, Australia (Remote)</p>
-            <ul>
-                <li>Assisted in designing brand identity concepts and product visuals using Adobe Creative Suite.</li>
-                <li>Contributed to community engagement strategies, aiding in a 10% increase in follower interaction
-                    during the internship period.</li>
-            </ul>
-        </div>
-    </section>
-    <section id="projects" class="projects">
-        <h3>Projects</h3>
-        <div class="project-grid">
-            <div class="project-card">
-                <h4>PG Accommodation System</h4>
-                <p>Full-stack web portal for students to find, filter, and manage PG accommodations with admin dashboard
-                    and CRUD functionality.</p>
-                <div class="tags">PHP • MySQL • HTML/CSS</div>
-            </div>
-            <div class="project-card">
-                <h4>Scrollforge API</h4>
-                <p>Procedural fantasy character generator with detailed biodata including backstories, factions, and
-                    alliances. Supports bulk generation.</p>
-                <div class="tags">Flask • JSON • Python • Render</div>
-            </div>
-            <div class="project-card">
-                <h4>Waifuwalls</h4>
-                <p>Digital art and wallpaper platform for anime, fantasy, sci-fi, and nature categories with aesthetic
-                    UI and category filtering.</p>
-                <div class="tags">Flask • PostgreSQL • Jinja2</div>
-            </div>
-            <div class="project-card">
-                <h4>LinkShrine.link</h4>
-                <p>Curated anime streaming directory with live link validation, automatic dead-link replacement, and
-                    pixel-art-inspired UI.</p>
-                <div class="tags">Flask • Python • JavaScript • Render</div>
-            </div>
-            <div class="project-card">
-                <h4>LinkShrine Web Crawler</h4>
-                <p>Automated URL indexer with 10+ filters for iframes, video tags, and metadata. Features preflight
-                    checks every 2 days.</p>
-                <div class="tags">Python • JSON • GoogleSearch</div>
-            </div>
-            <div class="project-card">
-                <h4>Telegram-based Chat Messenger</h4>
-                <p>Real-time messenger systems (SATI Messenger & Blazing Messenger) with custom commands, user
-                    verification, and session history.</p>
-                <div class="tags">Python • Telegram API</div>
-            </div>
-            <div class="project-card">
-                <h4>Desktop Web Browser</h4>
-                <p>Basic browser GUI with tabbed navigation, bookmark saving, and customized styling.</p>
-                <div class="tags">Python • PyQt5</div>
-            </div>
-            <div class="project-card">
-                <h4>AI Voice Assistant</h4>
-                <p>Personalized voice assistant for executing system commands, opening apps, and voice responses with
-                    failover handling.</p>
-                <div class="tags">Python • pyttsx3</div>
-            </div>
-            <div class="project-card">
-                <h4>URL Shortener</h4>
-                <p>Desktop utility app for generating shortened URLs.</p>
-                <div class="tags">Python • Tkinter</div>
-            </div>
-        </div>
-        <h4 class="subsection-title">Design & Media Projects</h4>
-        <div class="project-grid">
-            <div class="project-card">
-                <h4>VertexPost Brand Identity</h4>
-                <p>Created official logo and branding elements for a Blogger website.</p>
-                <div class="tags">Design • Branding</div>
-            </div>
-            <div class="project-card">
-                <h4>Skripply Post SEO</h4>
-                <p>Optimized Blogger-based website with SEO strategies, improving visibility and reach.</p>
-                <div class="tags">SEO • Optimization</div>
-            </div>
-            <div class="project-card">
-                <h4>Vodoo Video Chat App</h4>
-                <p>Designed app icon, mascot, and promotional videos for product launch branding.</p>
-                <div class="tags">After Effects • Premiere Pro</div>
-            </div>
-            <div class="project-card">
-                <h4>WordSpring Puzzle Game</h4>
-                <p>Designed app icon, splash screen, and promotional campaign roadmap.</p>
-                <div class="tags">Inkscape • Canva</div>
-            </div>
-        </div>
-    </section>
-    <section id="skills" class="skills">
-        <h3>Skills</h3>
-        <div class="skill-grid">
-            <div><strong>Languages:</strong> Python, PHP, JavaScript, HTML, CSS, Vibecode</div>
-            <div><strong>Frameworks:</strong> Flask, Django, Tkinter, PyQt5</div>
-            <div><strong>Databases:</strong> PostgreSQL, MySQL, Supabase, JSON</div>
-            <div><strong>Tools:</strong> GitHub, VS Code, XAMPP, Postman</div>
-            <div><strong>Design:</strong> Adobe Photoshop, Premiere Pro, After Effects, PageMaker, AVS Video Editor
-            </div>
-            <div><strong>Other:</strong> Microsoft Excel, PowerPoint</div>
-        </div>
-    </section>
-    <section id="education" class="education">
-        <h3>Education</h3>
-        <div class="edu-item">
-            <div class="edu-header">
-                <h4>B.Tech in Information Technology (IoT)</h4>
-                <span class="edu-date">Oct 2021 – Jul 2024</span>
-            </div>
-            <p>Samrat Ashok Technological Institute, Vidisha</p>
-            <p class="specialization">Specialization: Internet of Things</p>
-        </div>
-        <div class="edu-item">
-            <div class="edu-header">
-                <h4>Diploma in Computer Science & Engineering</h4>
-                <span class="edu-date">Apr 2016 – Jul 2020</span>
-            </div>
-            <p>Samrat Ashok Technological Institute, Vidisha</p>
-        </div>
-    </section>
-    <section id="certifications" class="certifications">
-        <h3>Certifications</h3>
-        <ul>
-            <li><strong>Data Analytics And Visualisation Virtual Experience</strong> – Accenture (July 14, 2023)</li>
-            <li><strong>Data Visualisation: Empowering Business With Effective Insights</strong> – TATA (May 20, 2023)
-            </li>
-            <li><strong>Technical Consulting Virtual Internship Assemble the Data And Data Analysis</strong> – SAP (May
-                25, 2023)
-            </li>
-            <li><strong>TCS Ion Career Edge - Young Professional </strong> – TCS (July 01, 2024)</li>
-            <li><strong>Human Resources Analytics:</strong> by The University of California, Irvine and offered through
-                Coursera - Coursera (October 07, 2025)</li>
-        </ul>
-    </section>
-    <section id="contact" class="contact">
-        <h3>Contact</h3>
-        <p>Email: <a href="mailto:vishwassharma38@gmail.com">vishwassharma38@gmail.com</a></p>
-        <p>Phone: +91 88178 58540</p>
-    </section>
+    </main>
+
     <footer class="footer">
-        <p>© 2025 Vishwas Sharma | Made with ❤️ and pastel pink</p>
+        <div class="container footer-inner">
+            <p>© <span id="year">2025</span> Vishwas Sharma · Day/night edition inspired by LinkShrine</p>
+            <p class="footer-links">
+                <a href="https://github.com/vishwassharma38" target="_blank" rel="noopener">GitHub</a>
+                <span aria-hidden="true">·</span>
+                <a href="mailto:vishwassharma38@gmail.com">Email</a>
+                <span aria-hidden="true">·</span>
+                <a href="#top">Back to top</a>
+            </p>
+        </div>
     </footer>
 
-    <!-- Back to Top Button -->
     <button id="backToTop" class="back-to-top" aria-label="Back to top">↑</button>
 
     <script>
-        // Back to Top Button functionality
-        const backToTopButton = document.getElementById('backToTop');
+        (function () {
+            var root = document.documentElement;
+            var toggle = document.getElementById('themeToggle');
+            var toggleText = document.getElementById('themeToggleText');
+            var KEY = 'vs-portfolio-theme';
+            var media = window.matchMedia('(prefers-color-scheme: dark)');
 
-        // Show button when user scrolls down 300px
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
+            function currentTheme() {
+                return root.getAttribute('data-theme') === 'night' ? 'night' : 'day';
             }
-        });
 
-        // Scroll to top when button is clicked
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
-        // Smooth scroll for navigation links
-        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-
-                if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+            function applyTheme(theme, persist) {
+                root.setAttribute('data-theme', theme);
+                var isNight = theme === 'night';
+                toggle.setAttribute('aria-pressed', String(isNight));
+                toggle.setAttribute('aria-label', isNight ? 'Switch to day theme' : 'Switch to night theme');
+                toggleText.textContent = isNight ? 'Activate day theme' : 'Activate night theme';
+                var meta = document.querySelector('meta[name="theme-color"]');
+                if (meta) meta.setAttribute('content', isNight ? '#0f0f1a' : '#f8f9fc');
+                if (persist) {
+                    try { localStorage.setItem(KEY, theme); } catch (e) { /* private mode */ }
                 }
+            }
+
+            // Initialize pressed state from the pre-paint value.
+            applyTheme(currentTheme(), false);
+
+            toggle.addEventListener('click', function () {
+                applyTheme(currentTheme() === 'night' ? 'day' : 'night', true);
             });
-        });
+
+            // Follow OS changes only when the visitor has no saved preference.
+            function onSystemChange(e) {
+                try {
+                    if (!localStorage.getItem(KEY)) applyTheme(e.matches ? 'night' : 'day', false);
+                } catch (err) {
+                    applyTheme(e.matches ? 'night' : 'day', false);
+                }
+            }
+            if (typeof media.addEventListener === 'function') media.addEventListener('change', onSystemChange);
+            else if (typeof media.addListener === 'function') media.addListener(onSystemChange);
+
+            // Mobile navigation
+            var menuButton = document.getElementById('menuButton');
+            var nav = document.getElementById('siteNav');
+            function setMenu(open) {
+                document.body.classList.toggle('nav-open', open);
+                menuButton.setAttribute('aria-expanded', String(open));
+                menuButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+            }
+            menuButton.addEventListener('click', function () {
+                setMenu(!document.body.classList.contains('nav-open'));
+            });
+            nav.addEventListener('click', function (event) {
+                if (event.target.closest('a')) setMenu(false);
+            });
+            document.addEventListener('keydown', function (event) {
+                if (event.key === 'Escape') setMenu(false);
+            });
+
+            // Back to top
+            var backToTopButton = document.getElementById('backToTop');
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            function onScroll() {
+                if (window.pageYOffset > 300) backToTopButton.classList.add('show');
+                else backToTopButton.classList.remove('show');
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            onScroll();
+            backToTopButton.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+            });
+
+            // Smooth anchor scrolling that respects reduced motion.
+            document.querySelectorAll('.site-nav a[href^="#"], .footer a[href^="#"], .hero-actions a[href^="#"]').forEach(function (anchor) {
+                anchor.addEventListener('click', function (e) {
+                    var target = document.querySelector(anchor.getAttribute('href'));
+                    if (!target) return;
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+                    target.setAttribute('tabindex', '-1');
+                    target.focus({ preventScroll: true });
+                });
+            });
+
+            // Active section highlighting
+            var links = Array.prototype.slice.call(nav.querySelectorAll('a[href^="#"]'));
+            if ('IntersectionObserver' in window && !reduceMotion) {
+                var map = {};
+                links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
+                var observer = new IntersectionObserver(function (entries) {
+                    entries.forEach(function (entry) {
+                        if (entry.isIntersecting && map[entry.target.id]) {
+                            links.forEach(function (a) { a.removeAttribute('aria-current'); });
+                            map[entry.target.id].setAttribute('aria-current', 'true');
+                        }
+                    });
+                }, { rootMargin: '-40% 0px -55% 0px' });
+                ['about', 'experience', 'projects', 'skills', 'education', 'certifications', 'contact'].forEach(function (id) {
+                    var section = document.getElementById(id);
+                    if (section) observer.observe(section);
+                });
+            }
+
+            document.getElementById('year').textContent = String(new Date().getFullYear());
+        })();
     </script>
 </body>
 
